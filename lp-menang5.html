@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siap Jualan Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #faf7f2; --white: #ffffff; --blue: #1d4ed8; --blue-light: #2563eb;
+  --gold: #facc15; --ink: #111827; --ink-2: #1f2937; --muted: #374151;
+  --gray: #6b7280; --border: #e5e7eb; --red: #b91c1c;
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+  --shadow-md: 0 12px 28px rgba(0,0,0,0.08), 0 36px 72px rgba(0,0,0,0.10);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.14), 0 48px 96px rgba(0,0,0,0.16);
+  --radius: 20px; --radius-sm: 12px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+.serif { font-family: 'Playfair Display', serif; }
+.highlight { color: var(--blue); }
+.strike { text-decoration: line-through; color: #9ca3af; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { width: 100%; padding: 64px 24px; }
+#hero { background: var(--cream); padding-top: 80px; padding-bottom: 52px; }
+.hero-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 50px); line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; }
+.hero-headline .tag-blue { background: var(--blue); color: var(--gold); padding: 3px 12px; border-radius: 6px; font-style: italic; }
+.hero-headline .underlined { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.hero-authority { font-size: clamp(20px, 3vw, 28px); font-weight: 300; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 18px; line-height: 1.35; }
+.hero-sub { font-size: 17px; color: var(--muted); line-height: 1.6; margin-bottom: 32px; }
+.hero-img { width: 100%; max-width: 480px; border-radius: var(--radius); box-shadow: var(--shadow-lg); margin: 0 auto 24px; display: block; }
+.refund-note { font-size: 14px; color: var(--gray); }
+#pain { background: var(--cream); padding-top: 16px; padding-bottom: 40px; }
+.pain-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+#insight { background: var(--cream); padding: 12px 24px 52px; }
+.card { background: var(--white); border-radius: var(--radius); padding: 36px 40px; box-shadow: var(--shadow-md); max-width: 820px; margin: 0 auto; text-align: center; }
+#mechanism { background: var(--cream); padding: 40px 24px; }
+.mechanism-inner { max-width: 1100px; margin: 0 auto; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+.feature-box { background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); }
+.feature-label { font-size: 11px; letter-spacing: 0.14em; color: var(--gray); text-transform: uppercase; margin-bottom: 8px; }
+.feature-box h3 { font-size: 18px; font-weight: 500; line-height: 1.35; color: var(--ink); margin-bottom: 10px; }
+.feature-box p { font-size: 15.5px; line-height: 1.55; color: var(--muted); margin-bottom: 14px; }
+.video-thumb { position: relative; aspect-ratio: 16/9; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; background: #000; }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+.video-thumb:hover img { opacity: 0.85; }
+.play-btn { position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; background: rgba(29,78,216,0.88); border-radius: 50%; pointer-events: none; transition: transform 0.2s; }
+.video-thumb:hover .play-btn { transform: scale(1.08); }
+.play-btn::after { content: ''; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); border-left: 14px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+.mechanism-closing { text-align: center; max-width: 780px; margin: 24px auto 0; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+#proof { background: var(--cream); padding: 40px 24px 52px; }
+.proof-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+.testi-card { background: var(--white); border-radius: var(--radius); padding: 28px; text-align: left; box-shadow: var(--shadow-sm); }
+.testi-card .quote { font-size: 16px; line-height: 1.65; color: var(--ink-2); margin-bottom: 10px; }
+.testi-card .author { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+.testi-card .proof-img img { width: 100%; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+#fit { background: var(--cream); padding: 40px 24px 52px; }
+.fit-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.fit-img { width: 100%; max-width: 420px; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
+.fit-content .preline { font-size: 13px; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 10px; }
+.fit-content h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 30px); font-weight: 500; line-height: 1.3; color: var(--ink); margin-bottom: 22px; }
+.fit-list { list-style: none; max-width: 500px; margin-bottom: 22px; }
+.fit-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 16.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 12px; }
+.fit-list .icon { color: var(--blue); font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+.authority-note { font-size: 16px; line-height: 1.6; color: var(--muted); margin-bottom: 14px; max-width: 520px; }
+.transition-note { font-size: 15.5px; color: var(--blue); }
+#bonus { background: var(--cream); padding: 52px 24px 60px; }
+.bonus-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.bonus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+.bonus-card { background: var(--white); border-radius: var(--radius); padding: 28px; text-align: left; box-shadow: var(--shadow-sm); }
+.bonus-card.featured { border: 2px solid var(--blue); }
+.bonus-badge { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+.bonus-badge.danger { color: var(--red); }
+.bonus-card h3 { font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+.bonus-card p { font-size: 15.5px; line-height: 1.6; color: var(--muted); margin-bottom: 10px; }
+.bonus-note { color: var(--ink-2); }
+.bonus-note.danger { color: #991b1b; }
+.bonus-closing { max-width: 600px; margin: 0 auto; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+#pricing { background: linear-gradient(to bottom, var(--white), #f1f5fb); padding: 80px 24px; width: 100%; }
+.pricing-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.countdown-box { margin-bottom: 40px; }
+.countdown-label { font-size: 14px; color: var(--gray); margin-bottom: 8px; }
+.countdown-timer { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--red); letter-spacing: 0.05em; }
+.value-stack { text-align: left; margin-bottom: 36px; border-top: 1px solid var(--border); }
+.value-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; color: var(--ink-2); gap: 12px; }
+.value-row strong { color: var(--ink); white-space: nowrap; }
+.total-box { padding: 20px 0 36px; text-align: center; }
+.total-box p { font-size: 14px; color: var(--gray); margin-bottom: 6px; }
+.total-price { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 600; color: var(--ink); }
+.price-box { background: var(--white); border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow-md); margin-bottom: 32px; }
+.price-normal { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+.launch-label { font-size: 13px; color: var(--red); margin-bottom: 14px; }
+.final-price { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 600; color: var(--blue); animation: softPulse 4s ease-in-out infinite; margin-bottom: 8px; }
+@keyframes softPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+.price-note { font-size: 14px; color: var(--gray); }
+.preline { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; display: block; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 32px); font-weight: 500; letter-spacing: -0.015em; line-height: 1.25; color: var(--ink); margin-bottom: 14px; }
+.section-subtitle { font-size: 17px; color: var(--muted); line-height: 1.6; max-width: 680px; margin: 0 auto; }
+.section-subtitle.mb { margin-bottom: 36px; }
+.section-body { font-size: 17px; line-height: 1.65; color: var(--ink-2); max-width: 720px; margin: 0 auto; }
+.section-body + .section-body { margin-top: 14px; }
+.exit-reminder { position: fixed; bottom: 20px; right: 20px; background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 9999; }
+.exit-reminder.show { opacity: 1; }
+@media (max-width: 900px) {
+  .feature-grid, .testimonial-grid, .bonus-grid { grid-template-columns: 1fr; }
+  .fit-inner { grid-template-columns: 1fr; text-align: center; gap: 28px; }
+  .fit-img { margin: 0 auto; }
+  .fit-list { margin: 0 auto 22px; }
+  .fit-list li { justify-content: flex-start; text-align: left; }
+  .authority-note, .transition-note { max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .card { padding: 24px 20px; }
+  .feature-box, .testi-card, .bonus-card, .price-box { padding: 22px 20px; }
+  .value-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1184469800500226');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1184469800500226&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+<section id="hero">
+  <div class="hero-inner">
+    <h1 class="hero-headline"><span class="underlined">LANGSUNG PRAKTEK</span> dan <span class="tag-blue">Copy-Paste</span><br>Sistem Jualan Digital</h1>
+    <h2 class="hero-authority">yang Sudah Terbukti Menghasilkan<br><span class="highlight">Omset Milyaran Rupiah</span></h2>
+    <p class="hero-sub">👋 Berhenti nebak-nebak.<br>Gunakan sistem yang sudah jalan, dan fokus ke <strong>jualan.</strong></p>
+    <img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770528615/Sistem_Pendukung_nj1lqv.png" alt="Preview Sistem Jualan Digital" class="hero-img">
+    <p class="refund-note">🚫 <em>Refund jika dalam 3 hari kamu merasa tidak mendapatkan value.</em></p>
+  </div>
+</section>
+
+<section id="pain" class="section">
+  <div class="pain-inner">
+    <h2 class="section-title">Banyak orang ingin <span class="highlight">mulai jualan online</span>,<br>tapi berhenti sebelum benar-benar mulai</h2>
+    <p class="section-subtitle mb" style="margin-bottom:14px;">Bukan karena tidak mampu — tapi karena semuanya terasa harus <strong>dimulai dari nol</strong>.</p>
+    <p class="section-body">Sudah ada niat, tapi bingung produk apa yang bisa dijual, harus mulai dari mana, dan langkah mana yang benar. Akhirnya banyak yang menunda — bukan karena tidak mau, tapi karena tidak ada <span class="highlight">sistem yang benar-benar siap dipakai</span>.</p>
+  </div>
+</section>
+
+<section id="insight">
+  <div class="card">
+    <span class="preline">Yang sering luput disadari</span>
+    <h2 class="section-title">Masalahnya bukan soal niat,<br>tapi <span class="highlight">cara pandang yang keliru sejak awal</span>.</h2>
+    <p class="section-subtitle" style="margin-bottom:16px;">Banyak orang masuk ke jualan digital dengan asumsi bahwa semuanya harus <strong>dibangun dari nol</strong>.</p>
+    <p class="section-body">Padahal di praktiknya, hasil jarang datang dari membangun sendiri. Lebih sering, hasil datang dari <strong>menggunakan sistem yang sudah jadi dan terbukti</strong>.</p>
+    <p class="section-body" style="margin-top:14px; font-weight:500;">Di titik inilah biasanya perbedaan mulai terlihat — antara mereka yang sekadar mencoba, dan mereka yang benar-benar <span class="highlight">siap untuk mengeksekusi</span>.</p>
+  </div>
+</section>
+
+<section id="mechanism">
+  <div class="mechanism-inner">
+    <div style="text-align:center; margin-bottom:32px;">
+      <h2 class="section-title">Apa yang Membuat<br><span class="highlight">Sistem Ini Berbeda</span> dari Metode di Luar Sana</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-box"><p class="feature-label">Struktur Belajar</p><h3>Kelas Disusun Sistematis<br>Lewat Video E-Course</h3><p>Materi disusun runtut dan jelas, sehingga kamu tahu harus mulai dari mana dan langkah apa selanjutnya.</p><div class="video-thumb" data-video-id="q_1muAIAEW0"><img src="https://img.youtube.com/vi/q_1muAIAEW0/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+      <div class="feature-box"><p class="feature-label">Alur Pembelajaran</p><h3>Preview Tampilan & Alur<br>Video Pembelajaran</h3><p>Bukan teori panjang, tapi panduan praktis yang langsung mengarah ke eksekusi.</p><div class="video-thumb" data-video-id="8cdw3CBcnvQ"><img src="https://img.youtube.com/vi/8cdw3CBcnvQ/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+      <div class="feature-box"><p class="feature-label">Eksekusi Nyata</p><h3>Produk Digital Siap Dijual<br>Bukan Sekadar Contoh</h3><p>Kamu langsung memegang produk digital yang memang disiapkan untuk dijual.</p><div class="video-thumb" data-video-id="mpA0ktRrdBQ"><img src="https://img.youtube.com/vi/mpA0ktRrdBQ/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+      <div class="feature-box"><p class="feature-label">Sistem Jualan</p><h3>30 Template Landing Page<br>Siap Pakai & Tinggal Export</h3><p>Struktur jualan sudah tersedia, kamu tinggal pilih dan langsung gunakan.</p><div class="video-thumb" data-video-id="vQGhokmYJM8"><img src="https://img.youtube.com/vi/vQGhokmYJM8/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+      <div class="feature-box"><p class="feature-label">Materi Iklan</p><h3>Materi Ngiklan Siap Pakai<br>Tanpa Trial Error Mahal</h3><p>Materi iklan sudah disiapkan, sehingga kamu tidak buang waktu & budget.</p><div class="video-thumb" data-video-id="E7A1kv1YtNQ"><img src="https://img.youtube.com/vi/E7A1kv1YtNQ/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+      <div class="feature-box"><p class="feature-label">Panduan Praktis</p><h3>Langkah Ngiklan Dijelaskan<br>Dari Nol Sampai Jalan</h3><p>Bukan cuma teori, tapi benar-benar dipandu sampai iklan kamu aktif.</p><div class="video-thumb" data-video-id="VIDEO_ID_6"><img src="https://img.youtube.com/vi/VIDEO_ID_6/hqdefault.jpg" alt="Video preview"><span class="play-btn"></span></div></div>
+    </div>
+    <p class="mechanism-closing">Ini bukan kumpulan materi terpisah.<br>Ini adalah <strong>satu sistem utuh</strong> untuk belajar dan langsung menjalankan digital marketing.</p>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="proof-inner">
+    <span class="preline">Hasil Nyata</span>
+    <h2 class="section-title">Ketika Sistem Ini<br><span class="highlight">Benar-Benar Digunakan</span></h2>
+    <p class="section-subtitle mb">Bukan klaim pemasaran.<br>Ini hasil dari mereka yang langsung menjalankan sistemnya.</p>
+    <div class="testimonial-grid">
+      <div class="testi-card"><p class="quote">"Dalam dua jam pertama langsung <strong>pecah telur</strong>. Dalam 48 jam, sistemnya sudah menghasilkan <strong>jutaan rupiah per hari</strong>."</p><p class="author">— Pengguna 1</p><div class="proof-img"><img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770596960/TestiSiapJualan1_daqgi3.png" alt="Bukti hasil pengguna 1"></div></div>
+      <div class="testi-card"><p class="quote">"Semua sudah disiapkan. Tinggal <strong>ikuti alur</strong>, dan hasilnya terasa jauh lebih cepat dibanding metode sebelumnya."</p><p class="author">— Pengguna 2</p><div class="proof-img"><img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770649677/Pngguna2_oqptjd.png" alt="Bukti hasil pengguna 2"></div></div>
+      <div class="testi-card"><p class="quote">"Sudah sering ikut e-course, tapi baru kali ini terasa benar-benar jalan. Semua sudah ada — <strong>tinggal dieksekusi</strong>."</p><p class="author">— Pengguna 3</p><div class="proof-img"><img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770628812/Testi3_qclleh.png" alt="Bukti hasil pengguna 3"></div></div>
+      <div class="testi-card"><p class="quote">"Ini bukan sekadar materi. Ini sistem yang <strong>mengubah cara saya jualan</strong>. Bahkan di harga lebih tinggi pun, tetap terasa layak."</p><p class="author">— Pengguna 4</p><div class="proof-img"><img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770649058/Pengguna_4_zgctf6.png" alt="Bukti hasil pengguna 4"></div></div>
+    </div>
+    <p class="section-body" style="margin-bottom:12px;">Sistem ini dirancang agar bahkan pemula bisa mulai jualan digital dengan <strong>menyalin sistem yang sudah siap</strong> — tanpa membuat produk sendiri, tanpa merancang struktur dari nol, dan tanpa trial error yang mahal.</p>
+    <p class="section-body" style="font-size:19px; font-weight:500;">Ini bukan kumpulan teori.<br><strong>Ini sistem eksekusi yang sudah dipakai.</strong></p>
+  </div>
+</section>
+
+<section id="fit" class="section">
+  <div class="fit-inner">
+    <div><img src="https://res.cloudinary.com/dlbalfyq0/image/upload/v1770528615/Sistem_Pendukung_nj1lqv.png" alt="Sistem Siap Jualan Digital" class="fit-img"></div>
+    <div class="fit-content">
+      <span class="preline">Siapa yang paling cocok?</span>
+      <h2>Sistem <span class="highlight">Siap Jualan Digital</span><br>Dirancang Untuk Kamu yang Ingin <strong>Hasil Lebih Cepat</strong></h2>
+      <ul class="fit-list">
+        <li><span class="icon">✓</span><span>Ingin <strong>langsung jualan</strong>, bukan sekadar konsumsi materi.</span></li>
+        <li><span class="icon">✓</span><span>Tidak mau membangun <strong>produk, landing page, dan alur jualan dari nol</strong>.</span></li>
+        <li><span class="icon">✓</span><span>Punya niat ngiklan, tapi ingin <strong>menghindari trial error yang mahal</strong>.</span></li>
+        <li><span class="icon">✓</span><span>Masih pemula, namun ingin memakai <strong>sistem yang sudah disiapkan dan terbukti</strong>.</span></li>
+      </ul>
+      <p class="authority-note"><strong>Penting:</strong> Ini bukan kelas yang mengajarkan teori panjang. Ini adalah sistem eksekusi yang disusun agar kamu tinggal mengikuti langkah yang sudah ada.</p>
+      <p class="transition-note">Selanjutnya, kamu akan melihat <strong>apa saja yang benar-benar kamu dapatkan</strong> di dalam sistem ini.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bonus">
+  <div class="bonus-inner">
+    <span class="preline">Bukan sekadar materi tambahan</span>
+    <h2 class="section-title">Bonus <span class="highlight">Eksklusif</span><br>yang <strong>TIDAK Selalu Dibuka</strong></h2>
+    <p class="section-subtitle mb">Bonus ini dirancang untuk mempercepat hasil dan menghindari trial error mahal. <strong>Beberapa hanya tersedia di batch ini.</strong></p>
+    <div class="bonus-grid">
+      <div class="bonus-card"><span class="bonus-badge">Bonus Strategi</span><h3>Framework Beriklan Anti Boncos</h3><p>Framework lengkap agar ngiklan lebih terarah, mulai dari <strong>fase testing, validasi, hingga scale up</strong>. Termasuk golden rules di setiap fase supaya tidak buang budget.</p></div>
+      <div class="bonus-card"><span class="bonus-badge">Akses Terbatas</span><h3>AI Assistant + Mentor Update System</h3><p>AI yang mampu menjawab pertanyaan seputar modul tanpa harus memutar ulang video dari awal.</p><p class="bonus-note">Jika AI belum bisa menjawab, <strong>mentor akan membantu & meng-update AI</strong>. Sistem ini tidak dibuka untuk jumlah besar.</p></div>
+      <div class="bonus-card featured"><span class="bonus-badge danger">⚠ Khusus 50 Orang Pertama</span><h3>Lisensi Menjual Produk + Komisi 70%</h3><p>Dapatkan hak khusus menjual produk <strong>Siap Jualan Digital</strong> menggunakan landing page premium dengan sistem komisi hingga <strong>70%</strong>.</p><p class="bonus-note danger">Setelah kuota 50 orang terpenuhi, lisensi ini <strong>DITUTUP dan tidak dibuka kembali</strong>.</p></div>
+      <div class="bonus-card"><span class="bonus-badge">Automation</span><h3>AI Generator Materi Iklan & Konten UGC</h3><p>Sistem AI untuk menghasilkan ide dan materi iklan tanpa henti. Bisa digunakan untuk ads maupun konten Instagram.</p><p class="bonus-note">Cocok untuk kamu yang tidak mau kehabisan <strong>angle iklan & konten</strong>.</p></div>
+    </div>
+    <p class="bonus-closing">Tidak semua bonus di atas akan selalu tersedia.<br>Jika kamu membaca halaman ini sekarang, <strong>artinya kamu masih berada di fase yang tepat.</strong></p>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="pricing-inner">
+    <span class="preline">Investasi Sistem Siap Jualan Digital</span>
+    <h2 class="section-title">Amankan <span class="highlight">Sistem Lengkap</span><br>Selama Harga Spesial Peluncuran Masih Dibuka</h2>
+    <p class="section-subtitle" style="margin-bottom:36px;">Setelah 50 peserta pertama, harga naik ke Rp497.000</p>
+    <div class="countdown-box">
+      <p class="countdown-label">Harga Spesial Berakhir Dalam:</p>
+      <div id="countdown" class="countdown-timer">00 : 00 : 00</div>
+    </div>
+    <div class="value-stack">
+      <div class="value-row"><span>Video E-Course Sistematis</span><strong>Rp2.500.000</strong></div>
+      <div class="value-row"><span>30 Template Landing Page Premium</span><strong>Rp1.500.000</strong></div>
+      <div class="value-row"><span>Framework Iklan Anti Boncos</span><strong>Rp1.200.000</strong></div>
+      <div class="value-row"><span>AI Assistant + Update Mentor</span><strong>Rp2.000.000</strong></div>
+      <div class="value-row"><span>AI Generator Materi Iklan</span><strong>Rp1.000.000</strong></div>
+      <div class="value-row"><span>Lisensi + Komisi 70%</span><strong>Rp3.000.000+</strong></div>
+    </div>
+    <div class="total-box">
+      <p>Total Nilai Realistis</p>
+      <div class="total-price">Rp11.200.000+</div>
+    </div>
+    <div class="price-box">
+      <p class="price-normal">Harga Normal <span class="strike">Rp997.000</span></p>
+      <p class="launch-label">Harga Spesial Peluncuran (50 Orang Pertama)</p>
+      <div class="final-price">Rp149.000</div>
+      <p class="price-note">Akses penuh + seluruh bonus eksklusif</p>
+    </div>
+
+    <a href="https://app.sandbox.midtrans.com/payment-links/3745ad1d-e8c0-4454-be99-6b9230647264?custom_field4=26l4zjgy3uzhp7e" target="_blank" rel="noopener noreferrer" class="midtrans-btn" data-lp-id="26l4zjgy3uzhp7e" style="display:inline-block;background:#7C3AED;color:#fff;padding:14px 32px;border-radius:8px;font-size:16px;font-weight:700;text-decoration:none;cursor:pointer;" onclick="if(typeof fbq!=='undefined'){fbq('track','AddToCart',{value:149000,currency:'IDR',content_type:'product'});fbq('track','InitiateCheckout',{value:149000,currency:'IDR'});}if(typeof ttq!=='undefined'){ttq.track('AddToCart',{value:149000,currency:'IDR'});}if(typeof gtag!=='undefined'){gtag('event','add_to_cart',{currency:'IDR',value:149000});}">AMANKAN AKSES SEKARANG</a>
+
+  </div>
+</section>
+
+<div class="exit-reminder" id="exitReminder">Harga akan segera naik ke Rp497.000</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+document.querySelectorAll('.video-thumb').forEach(box => {
+  box.addEventListener('click', () => {
+    const id = box.dataset.videoId;
+    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border-radius:12px;"></iframe>`;
+    new YT.Player(box.querySelector('iframe'), {
+      events: { onStateChange: e => { if (e.data === YT.PlayerState.ENDED) { box.innerHTML = `<img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt=""><span class="play-btn"></span>`; } } }
+    });
+  });
+});
+
+(function() {
+  let stored = localStorage.getItem('sjd_end');
+  if (!stored) { stored = Date.now() + 48 * 60 * 60 * 1000; localStorage.setItem('sjd_end', stored); }
+  const end = parseInt(stored);
+  setInterval(() => {
+    const diff = end - Date.now();
+    if (diff <= 0) { document.getElementById('countdown').textContent = '00 : 00 : 00'; return; }
+    const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('countdown').textContent = String(h).padStart(2,'0') + ' : ' + String(m).padStart(2,'0') + ' : ' + String(s).padStart(2,'0');
+  }, 1000);
+})();
+
+(function() {
+  setTimeout(() => {
+    const cta = document.querySelector('.midtrans-btn') || document.getElementById('mainCTA');
+    if (!cta) return;
+    let timer;
+    function resetIdle() { clearTimeout(timer); cta.classList.remove('idle-glow'); timer = setTimeout(() => cta.classList.add('idle-glow'), 8000); }
+    document.onmousemove = resetIdle; document.onkeypress = resetIdle; resetIdle();
+  }, 500);
+})();
+
+document.addEventListener('mouseout', e => { if (!e.toElement && !e.relatedTarget && e.clientY < 10) { document.getElementById('exitReminder').classList.add('show'); } });
+
+
+</script>
+<script>(function(){function fire(){if(typeof fbq!=="undefined"){fbq("track","AddToCart",{value:149000,currency:"IDR",content_type:"product"});fbq("track","InitiateCheckout",{value:149000,currency:"IDR"});}if(typeof ttq!=="undefined")ttq.track("AddToCart",{value:149000,currency:"IDR"});if(typeof gtag!=="undefined")gtag("event","add_to_cart",{currency:"IDR",value:149000});}function attach(){var sels=[".midtrans-btn","a[href*="midtrans"]","a[href*="payment-links"]",".cta-button","#mainCTA"];sels.forEach(function(s){document.querySelectorAll(s).forEach(function(b){if(b.dataset.pt)return;b.dataset.pt="1";b.addEventListener("click",fire);});});}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",attach);}else{attach();}})();
+
+
+
+
+
+
+
+
+// Pixel tracking — AddToCart & InitiateCheckout
+document.querySelectorAll('a[href*="midtrans"],a[href*="payment-links"],.midtrans-btn,.cta-button,#mainCTA').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq!=="undefined"){fbq("track","AddToCart",{value:149000,currency:"IDR"});fbq("track","InitiateCheckout",{value:149000,currency:"IDR"});}}); });
+// END Pixel tracking
+</script></body>
+</html>
